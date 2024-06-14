@@ -109,7 +109,7 @@ async function run() {
       }
     });
 
-    app.get("/allTask",  async (req, res) => {
+    app.get("/allTask", verifyToken, async (req, res) => {
       try {
         const result = await taskCollection.find({}).toArray();
         res.send(result);
